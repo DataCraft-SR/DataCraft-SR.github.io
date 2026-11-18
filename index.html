@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swetha Raj Portfolio</title>
+<meta name="description" content="Swetha Raj, Data & Marketing Analyst in Munich. Power BI, Advanced Excel, LabVIEW, Python & SQL and CRM/RevOps projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: an analyst's report. Hero = funnel + scorecard, then a project library organised as folders, a ledger-style timeline, skills, education. */
+:root{
+  --paper:#F2F4F1;
+  --surface:#FFFFFF;
+  --ink:#141821;
+  --muted:#5A6170;
+  --line:#D9DDD8;
+  --accent:#2B44E0;
+  --accent-soft:#E3E7FD;
+  --mark:#F2B53A;
+  --ok:#1F8A55;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#10131A; --surface:#181C25; --ink:#ECEEF2; --muted:#A1A7B4;
+    --line:#2A303C; --accent:#8C9BFF; --accent-soft:#232A4A; --mark:#F2B53A; --ok:#4CC488;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#10131A; --surface:#181C25; --ink:#ECEEF2; --muted:#A1A7B4;
+  --line:#2A303C; --accent:#8C9BFF; --accent-soft:#232A4A; --mark:#F2B53A; --ok:#4CC488;
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important; animation:none!important} }
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:focus-visible, button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.08}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:5;background:color-mix(in srgb, var(--paper) 88%, transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.mark{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;color:var(--ink);text-decoration:none}
+.mono-badge{width:32px;height:32px;border-radius:8px;background:var(--ink);color:var(--paper);display:grid;place-items:center;font-size:14px;font-weight:800;letter-spacing:.02em}
+nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:15px}
+nav ul a{color:var(--muted);text-decoration:none}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:720px){ nav ul{display:none} }
+
+/* Hero */
+.hero{padding:60px 0 36px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+@media (max-width:860px){ .hero{grid-template-columns:1fr;gap:36px;padding-top:44px} }
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 22%,transparent)}
+.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:800;letter-spacing:-.025em;margin:22px 0 18px}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%, color-mix(in srgb,var(--mark) 70%,transparent) 62%);padding:0 2px}
+.lede{font-size:19px;color:var(--muted);max-width:56ch;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:10px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid var(--ink);transition:transform .15s ease}
+.btn.primary{background:var(--ink);color:var(--paper)}
+.btn.ghost{color:var(--ink);background:transparent}
+.btn:hover{transform:translateY(-2px)}
+
+.funnel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 22px 18px}
+.funnel h2{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.stage{display:grid;grid-template-columns:100px 1fr;align-items:center;gap:12px;margin-bottom:10px;font-size:14px}
+.stage span{color:var(--muted)}
+.bar{height:26px;border-radius:6px;background:var(--accent);transform-origin:left;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+.stage:nth-child(2) .bar{width:100%;opacity:.35;animation-delay:.05s}
+.stage:nth-child(3) .bar{width:72%;opacity:.55;animation-delay:.15s}
+.stage:nth-child(4) .bar{width:46%;opacity:.78;animation-delay:.25s}
+.stage:nth-child(5) .bar{width:28%;opacity:1;animation-delay:.35s;box-shadow:inset -6px 0 0 var(--mark)}
+@keyframes grow{from{transform:scaleX(.15)}to{transform:scaleX(1)}}
+.funnel p{margin:14px 0 0;font-size:13.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:12px}
+
+.score{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:16px;background:var(--surface);overflow:hidden;margin:8px 0 72px}
+.score div{padding:22px 22px 20px;border-right:1px solid var(--line)}
+.score div:last-child{border-right:0}
+.score b{display:block;font-family:var(--display);font-size:clamp(34px,4.4vw,48px);font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+.score b small{font-size:.5em;color:var(--accent);margin-left:2px}
+.score span{display:block;margin-top:10px;font-size:14px;color:var(--muted);line-height:1.4}
+@media (max-width:760px){ .score{grid-template-columns:1fr 1fr} .score div:nth-child(2){border-right:0} .score div:nth-child(-n+2){border-bottom:1px solid var(--line)} }
+
+section{padding:8px 0 72px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:28px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(28px,3.6vw,38px);font-weight:700;letter-spacing:-.015em}
+.sec-head p{margin:0;color:var(--muted);font-size:15px}
+
+/* ---------- Project library (folders) ---------- */
+.library{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start}
+@media (max-width:900px){ .library{grid-template-columns:1fr} }
+
+.folders{display:flex;flex-direction:column;gap:8px;position:sticky;top:80px}
+@media (max-width:900px){ .folders{position:static;flex-direction:row;overflow-x:auto;padding-bottom:6px} }
+.folder{all:unset;cursor:pointer;display:grid;grid-template-columns:40px 1fr auto;align-items:center;gap:12px;padding:12px 14px;border-radius:12px;border:1px solid transparent;color:var(--ink);transition:background .15s ease,border-color .15s ease}
+@media (max-width:900px){ .folder{flex:0 0 auto;grid-template-columns:32px auto auto} }
+.folder:hover{background:var(--surface);border-color:var(--line)}
+.folder[aria-selected="true"]{background:var(--surface);border-color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.folder:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.folder svg{width:40px;height:32px}
+@media (max-width:900px){ .folder svg{width:32px;height:26px} }
+.folder .f-back{fill:color-mix(in srgb,var(--fc) 55%,var(--surface))}
+.folder .f-front{fill:var(--fc)}
+.folder .f-name{font-weight:600;font-size:15.5px;line-height:1.25;white-space:nowrap}
+.folder .f-sub{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);font-weight:400}
+.folder .f-count{font-family:var(--mono);font-size:12.5px;min-width:26px;text-align:center;padding:2px 7px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+
+.panel{min-width:0}
+.path{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:6px}
+.path b{color:var(--ink);font-weight:500}
+.panel-title{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.panel-title h3{font-size:clamp(26px,3.2vw,34px);font-weight:800;letter-spacing:-.015em}
+.panel-title p{margin:6px 0 0;color:var(--muted);max-width:60ch;font-size:15.5px}
+
+.files{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media (max-width:760px){ .files{grid-template-columns:1fr} }
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:11px;transition:border-color .15s ease, transform .15s ease;animation:rise .35s ease both}
+@keyframes rise{from{transform:translateY(6px)}to{transform:none}}
+.proj:hover{border-color:var(--accent);transform:translateY(-3px)}
+.proj.wide{grid-column:1 / -1}
+.proj-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.kind{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.04em;text-transform:uppercase}
+.pill{font-family:var(--mono);font-size:11.5px;padding:3px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.pill.gh{color:var(--ok)}
+.pill.work{color:var(--accent)}
+.pill.course{color:var(--muted)}
+.pill.wip{color:#B57A08}
+:root[data-theme="dark"] .pill.wip{color:var(--mark)}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .pill.wip{color:var(--mark)} }
+.proj h4{font-family:var(--display);font-size:23px;font-weight:700;letter-spacing:-.01em;margin:0;line-height:1.15;text-wrap:balance}
+.proj p{margin:0;color:var(--muted);font-size:15.5px}
+.proj ul{margin:0;padding-left:18px;font-size:15px}
+.proj ul li{margin:3px 0}
+.insight{background:var(--accent-soft);border-radius:10px;padding:10px 14px;font-size:14.5px}
+.insight strong{font-family:var(--mono);font-weight:500;font-size:12px;display:block;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
+.pages{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:600px){ .pages{grid-template-columns:1fr} }
+.pages div{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--paper);font-size:14px}
+.pages b{display:block;font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.chip{font-family:var(--mono);font-size:12.5px;padding:4px 9px;border-radius:6px;border:1px solid var(--line);color:var(--ink);background:var(--paper)}
+.proj a.more{font-weight:600;font-size:15px;text-decoration:none}
+.proj a.more:hover{text-decoration:underline}
+
+/* Experience */
+.ledger{display:flex;flex-direction:column}
+.row{display:grid;grid-template-columns:180px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
+.row:first-child{padding-top:0}
+@media (max-width:700px){ .row{grid-template-columns:1fr;gap:8px} }
+.when{font-family:var(--mono);font-size:13.5px;color:var(--muted);line-height:1.5}
+.when b{display:block;color:var(--ink);font-weight:500}
+.row h3{font-size:22px;font-weight:700}
+.org{color:var(--muted);font-size:15.5px;margin:4px 0 10px}
+.row ul{margin:0;padding-left:18px}
+.row li{margin:5px 0;max-width:68ch}
+.award{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:14px;font-weight:600;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--mark) 26%,transparent);color:var(--ink)}
+
+/* Skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:860px){ .skills{grid-template-columns:1fr} }
+.skillset{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+.skillset h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.skillset p{margin:0 0 14px;color:var(--muted);font-size:14.5px}
+
+/* Education */
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:760px){ .edu{grid-template-columns:1fr} }
+.edu article{border-left:3px solid var(--accent);padding:4px 0 4px 18px}
+.edu h3{font-size:21px;font-weight:700}
+.edu .org{margin:4px 0 8px}
+.edu p{margin:0;font-size:15.5px}
+.extras{margin-top:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:760px){ .extras{grid-template-columns:1fr} }
+.extras div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;font-size:15.5px}
+.extras h3{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.extras ul{margin:0;padding-left:18px}
+
+/* Contact */
+.contact{background:var(--ink);color:var(--paper);border-radius:20px;padding:44px clamp(24px,5vw,56px);display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center;margin-bottom:56px}
+@media (max-width:760px){ .contact{grid-template-columns:1fr} }
+.contact h2{font-size:clamp(30px,4vw,44px);font-weight:800;letter-spacing:-.02em;color:var(--paper)}
+.contact p{color:color-mix(in srgb,var(--paper) 72%,transparent);margin:12px 0 0}
+.links{display:flex;flex-direction:column;gap:10px}
+.links a{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px 16px;border-radius:10px;background:color-mix(in srgb,var(--paper) 8%,transparent);color:var(--paper);text-decoration:none;font-size:15px;border:1px solid color-mix(in srgb,var(--paper) 14%,transparent);transition:background .15s ease}
+.links a:hover{background:color-mix(in srgb,var(--paper) 16%,transparent)}
+.links a span{font-family:var(--mono);font-size:13px;opacity:.8;word-break:break-all;text-align:right}
+footer{padding:0 0 40px;color:var(--muted);font-size:13.5px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="mark" href="#top"><span class="mono-badge">SR</span>Swetha Raj</a>
+    <ul>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+  <header class="hero">
+    <div>
+      <span class="status"><i aria-hidden="true"></i>Open to analyst roles · Germany, Europe, remote</span>
+      <h1>I find where the funnel leaks, and <em>fix it with data.</em></h1>
+      <p class="lede">Marketing &amp; Operations Analyst in Munich with an MSc in Advanced Computer Science. I build Power BI and Excel models, analyse lead funnels in HubSpot and Metabase, and bring an engineer's background in LabVIEW and industrial automation.</p>
+      <div class="cta">
+        <a class="btn primary" href="#projects">Open the project folders</a>
+        <a class="btn ghost" href="mailto:swetharajvv345@gmail.com">Get in touch</a>
+      </div>
+    </div>
+    <aside class="funnel" aria-label="The lead funnel I work on">
+      <h2>What I work on, end to end</h2>
+      <div class="stage"><span>Leads</span><div class="bar"></div></div>
+      <div class="stage"><span>Qualified</span><div class="bar"></div></div>
+      <div class="stage"><span>Viewing / call</span><div class="bar"></div></div>
+      <div class="stage"><span>Signed</span><div class="bar"></div></div>
+      <p>From first touch to signed contract: tracking each stage in HubSpot, finding the drop-offs, and reporting the KPIs that move them.</p>
+    </aside>
+  </header>
+
+  <div class="score" role="list" aria-label="Results at a glance">
+    <div role="listitem"><b>+25<small>%</small></b><span>more qualified leads from funnel and CRM optimisation</span></div>
+    <div role="listitem"><b>+38<small>%</small></b><span>operational efficiency across multi-city operations</span></div>
+    <div role="listitem"><b>102</b><span>deals taken to signed contract as Marketing Analyst</span></div>
+    <div role="listitem"><b>4</b><span>cities run in operations: Munich, Berlin, Hamburg, Oslo</span></div>
+  </div>
+
+  <section id="projects">
+    <div class="sec-head">
+      <h2>Project library</h2>
+      <p>Pick a folder. Code lives on <a href="https://github.com/DataCraft-SR">GitHub · DataCraft-SR</a></p>
+    </div>
+
+    <div class="library">
+      <div class="folders" role="tablist" aria-label="Project folders" id="folders"></div>
+      <div class="panel" role="tabpanel" id="panel" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head">
+      <h2>Experience</h2>
+      <p>Marketing analytics, operations, software and BI</p>
+    </div>
+    <div class="ledger">
+      <div class="row">
+        <div class="when"><b>Mar 2026 – Nov 2026</b>Munich · remote</div>
+        <div>
+          <h3>Operations &amp; Marketing Analyst</h3>
+          <div class="org">LifeX · flexible furnished housing across Europe</div>
+          <ul>
+            <li>Took 102 deals from first enquiry to signed contract, working the inbound funnel in HubSpot</li>
+            <li>Analysed funnel drop-offs, lead sources and conversion in Metabase, lifting qualified leads by 25%</li>
+            <li>Built KPI dashboards and reporting for marketing and sales performance</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when"><b>Mar 2025 – Feb 2026</b>Munich</div>
+        <div>
+          <h3>Assistant Operations Manager</h3>
+          <div class="org">LifeX · Munich, Berlin, Hamburg, Oslo</div>
+          <ul>
+            <li>Ran day-to-day operations across four cities, from move-ins to property coordination</li>
+            <li>Streamlined multi-city workflows and reporting, improving operational efficiency by 38%</li>
+          </ul>
+          <span class="award">★ Best Employee for Operational Excellence</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when"><b>Feb 2024 – Feb 2025</b>Oldham, UK</div>
+        <div>
+          <h3>Software Engineer</h3>
+          <div class="org">Control Software Solutions · industrial automation</div>
+          <ul>
+            <li>Developed automation projects in Siemens TIA Portal and refactored PLC code</li>
+            <li>Worked with LabVIEW, hardware and instrument integration, Git, testing and CI</li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="when"><b>Feb 2020 – Jan 2023</b>India · remote</div>
+        <div>
+          <h3>Business Analyst</h3>
+          <div class="org">Teccorps Solutions Pvt Ltd</div>
+          <ul>
+            <li>E-commerce analytics: sales, product and customer performance</li>
+            <li>Built Excel and Power BI dashboards for management reporting</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <h2>Skills</h2>
+      <p>Tools I use day to day</p>
+    </div>
+    <div class="skills">
+      <div class="skillset">
+        <h3>Analytics &amp; BI</h3>
+        <p>Dashboards, data models and analysis that answer a business question.</p>
+        <div class="chips"><span class="chip">Power BI</span><span class="chip">DAX</span><span class="chip">Power Query</span><span class="chip">Metabase</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">Tableau</span></div>
+      </div>
+      <div class="skillset">
+        <h3>Advanced Excel</h3>
+        <p>Models, forecasts and reports built to hold up to scrutiny.</p>
+        <div class="chips"><span class="chip">Pivot tables</span><span class="chip">XLOOKUP / INDEX-MATCH</span><span class="chip">Forecasting</span><span class="chip">Variance analysis</span><span class="chip">Budget models</span><span class="chip">Dashboards</span></div>
+      </div>
+      <div class="skillset">
+        <h3>Engineering &amp; RevOps</h3>
+        <p>Automation on the factory floor and in the CRM.</p>
+        <div class="chips"><span class="chip">LabVIEW</span><span class="chip">Siemens TIA Portal</span><span class="chip">PLC</span><span class="chip">Git &amp; CI</span><span class="chip">HubSpot CRM</span><span class="chip">GTM automation</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head">
+      <h2>Education</h2>
+      <p>Computer science, from fundamentals to research</p>
+    </div>
+    <div class="edu">
+      <article>
+        <h3>MSc Advanced Computer Science</h3>
+        <div class="org">University of Strathclyde, Glasgow · 2022 – 2023</div>
+        <p>Dissertation project: an Android application that monitors students' academic performance and wellbeing.</p>
+      </article>
+      <article>
+        <h3>BE Computer Science &amp; Engineering</h3>
+        <div class="org">Anna University, India · First Class · 2019</div>
+        <p>Focus on AI, cloud computing and programming in C and Python. Thesis published in a journal.</p>
+      </article>
+    </div>
+    <div class="extras">
+      <div>
+        <h3>Recent learning</h3>
+        <ul>
+          <li>Excel for Financial Planning &amp; Analysis (LinkedIn Learning, 2026)</li>
+          <li>Agentic AI frameworks session, AI-Innovators Munich</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Languages</h3>
+        <ul>
+          <li>English: fluent, professional working language</li>
+          <li>German: B1, preparing for B2</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="contact" id="contact">
+    <div>
+      <h2>Looking for an analyst who can talk to sales, ops and engineers?</h2>
+      <p>I'm open to Data, Marketing, Operations and Business Analyst roles in Germany, across Europe, or remote.</p>
+    </div>
+    <div class="links">
+      <a href="mailto:swetharajvv345@gmail.com">Email <span>swetharajvv345@gmail.com</span></a>
+      <a href="https://www.linkedin.com/in/swetha-raj-vv/">LinkedIn <span>in/swetha-raj-vv</span></a>
+      <a href="https://github.com/DataCraft-SR">GitHub <span>DataCraft-SR</span></a>
+    </div>
+  </div>
+
+  <footer>Swetha Raj · Munich, Germany</footer>
+</main>
+
+<script>
+const STATUS = {
+  gh:     {cls:"gh",     label:"On GitHub"},
+  work:   {cls:"work",   label:"Work project"},
+  course: {cls:"course", label:"Course"},
+  wip:    {cls:"wip",    label:"In progress"},
+  li:     {cls:"work",   label:"Shown on LinkedIn"}
+};
+
+const FOLDERS = [
+  {
+    id:"power-bi", name:"Power BI", sub:"Dashboards & DAX", color:"#F2B53A",
+    intro:"Interactive reports with clean star-schema models, explicit DAX measures and layouts built for decisions.",
+    projects:[
+      {
+        title:"Munich Spatial Property Insights", kind:"Spatial analytics", status:"gh", wide:true,
+        summary:"A three-page Power BI report analysing 500 residential properties across 20 Munich districts: pricing, district performance and investment yield.",
+        pages:[["Page 1","Overview: interactive map, KPI cards, slicers"],["Page 2","District deep-dive: price trends and property counts"],["Page 3","Investment view: size vs price/m², yield matrix"]],
+        bullets:["7 DAX measures: average price per m², rental yield %, listed %, district ranking","Pipeline: Python cleaning → CSV → star schema → filters by zone, type and price band"],
+        insight:"Maximiliansviertel averages over €11k/m², while suburban districts return 3.5–4.2% rental yields.",
+        tools:["Power BI","DAX","Python","Star schema","Geospatial"],
+        link:["https://github.com/DataCraft-SR/munich-spatial-property-insights","View repository →"]
+      },
+      {
+        title:"Advanced Retail Analytics Framework", kind:"BI engineering", status:"li",
+        summary:"An enterprise-style retail dashboard showing that a clean data model and a clean interface depend on each other.",
+        bullets:["Star schema separating sales facts from product, store and calendar dimensions","Explicit DAX library and a custom date table for month-over-month variance","Report-page tooltips, field-parameter toggles and KPI health indicators against target"],
+        tools:["Power BI","DAX","Time intelligence","Field parameters"],
+        link:["https://www.linkedin.com/in/swetha-raj-vv/","Walkthrough on LinkedIn →"]
+      },
+      {
+        title:"E-commerce Management Dashboards", kind:"Business analytics", status:"work",
+        summary:"Management reporting at Teccorps Solutions on e-commerce sales, product and customer performance.",
+        bullets:["Power BI and Excel dashboards for recurring management reviews","Sales, product mix and customer trends in one view"],
+        tools:["Power BI","Excel","KPI reporting"]
+      }
+    ]
+  },
+  {
+    id:"excel", name:"Advanced Excel", sub:"Models & forecasting", color:"#3FA36B",
+    intro:"Financial planning, forecasting and reporting models built in Excel, with formulas someone else can audit.",
+    projects:[
+      {
+        title:"FP&A Forecasting & Variance Model", kind:"Financial planning", status:"course",
+        summary:"Excel for Financial Planning and Analysis (LinkedIn Learning, Nov 2026): budgeting, forecasting and variance analysis, applied to revenue reporting.",
+        bullets:["Budget vs actual variance analysis with clear drivers","Forecasting techniques and scenario modelling","Model structure that separates inputs, calculations and outputs"],
+        tools:["Excel","Forecasting","Variance analysis","Budgeting"]
+      },
+      {
+        title:"E-commerce Sales Reporting Workbooks", kind:"Management reporting", status:"work", wide:true,
+        summary:"Recurring Excel reports at Teccorps Solutions tracking sales, product and customer performance.",
+        bullets:["Excel dashboards for recurring management reviews","Sales, product and customer performance tracked period over period"],
+        tools:["Excel","Pivot tables","Dashboards"]
+      }
+    ]
+  },
+  {
+    id:"labview", name:"LabVIEW & Automation", sub:"Test & industrial systems", color:"#E2574C",
+    intro:"Engineering work from industrial automation: instrument integration, PLC programming and software quality.",
+    projects:[
+      {
+        title:"Instrument Integration with LabVIEW", kind:"Test & measurement", status:"work",
+        summary:"At Control Software Solutions (Manchester): connecting hardware and instruments to LabVIEW applications for industrial automation clients.",
+        bullets:["Hardware and instrument integration in LabVIEW","Testing and version control with Git and CI"],
+        tools:["LabVIEW","Instrument I/O","Git","CI & testing"]
+      },
+      {
+        title:"PLC Development & Refactoring", kind:"Industrial automation", status:"work",
+        summary:"Automation projects developed in Siemens TIA Portal, including refactoring existing PLC code for clarity and maintainability.",
+        bullets:["Project development in Siemens TIA Portal","Refactored PLC code to make it easier to read, test and maintain"],
+        tools:["Siemens TIA Portal","PLC","Refactoring"]
+      }
+    ]
+  },
+  {
+    id:"python-sql", name:"Python & SQL", sub:"Pipelines & analysis", color:"#2B44E0",
+    intro:"Data pipelines and analysis in code: extract, clean, transform, then hand off to a model or dashboard.",
+    projects:[
+      {
+        title:"Global Job Market Analysis", kind:"ETL pipeline", status:"gh",
+        summary:"Which European countries have the most job openings, measured against unemployment, using real data.",
+        bullets:["Extract scripts for job postings and unemployment data","Transform step that cleans and joins the sources for analysis","Power BI layer planned on top of the cleaned tables"],
+        tools:["Python","ETL","SQL","Power BI"],
+        link:["https://github.com/DataCraft-SR/global-job-market-analysis","View repository →"]
+      },
+      {
+        title:"Student Performance & Wellbeing App", kind:"MSc dissertation", status:"course",
+        summary:"An Android application, built for my MSc at the University of Strathclyde, that monitors students' academic performance and wellbeing.",
+        bullets:["Designed and built the app end to end","Combined performance data with wellbeing tracking"],
+        tools:["Android","Mobile app","Research"]
+      }
+    ]
+  },
+  {
+    id:"revops", name:"CRM & RevOps", sub:"HubSpot & funnels", color:"#8E5BD9",
+    intro:"Lead funnels, CRM automation and the reporting that tells sales where to spend its time.",
+    projects:[
+      {
+        title:"Inbound Funnel Optimisation at LifeX", kind:"Funnel analytics", status:"work", wide:true,
+        summary:"Working the full inbound funnel for furnished housing across European cities, from enquiry to signed contract.",
+        bullets:["102 deals taken to signed contract","Funnel and lead-source analysis in Metabase; qualified leads up 25%","Lead follow-up and pipeline management in HubSpot"],
+        tools:["HubSpot","Metabase","Funnel KPIs","Lead management"]
+      },
+      {
+        title:"SaaS RevOps & Lead Funnel Analytics", kind:"Portfolio project", status:"wip",
+        summary:"An end-to-end funnel analysis on a HubSpot-style CRM dataset: stage conversion, lead source quality and pipeline velocity.",
+        bullets:["SQL for conversion rates, drop-off points and time in stage","Power BI dashboard on pipeline health"],
+        tools:["SQL","Power BI","HubSpot data model"]
+      },
+      {
+        title:"HubSpot Workflow Automation", kind:"Case study", status:"wip",
+        summary:"How lead routing, follow-up sequences and lifecycle-stage updates can be automated in HubSpot to cut manual work.",
+        bullets:["Workflows for lead assignment and lifecycle changes","Before/after reporting on response time and conversion"],
+        tools:["HubSpot","Workflows","RevOps"]
+      }
+    ]
+  }
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const folderSvg = '<svg viewBox="0 0 40 32" aria-hidden="true"><path class="f-back" d="M2 6a3 3 0 0 1 3-3h10l4 4h16a3 3 0 0 1 3 3v17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z"/><path class="f-front" d="M2 12a3 3 0 0 1 3-3h30a3 3 0 0 1 3 3v15a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3z"/></svg>';
+
+const foldersEl = document.getElementById("folders");
+const panelEl = document.getElementById("panel");
+
+foldersEl.innerHTML = FOLDERS.map(f =>
+  '<button class="folder" role="tab" id="tab-' + f.id + '" aria-controls="panel" aria-selected="false" data-id="' + f.id + '" style="--fc:' + f.color + '">' +
+  folderSvg +
+  '<span class="f-name">' + esc(f.name) + '<span class="f-sub">' + esc(f.sub) + '</span></span>' +
+  '<span class="f-count">' + f.projects.length + '</span></button>').join("");
+
+function card(p){
+  const st = STATUS[p.status];
+  let h = '<article class="proj' + (p.wide ? ' wide' : '') + '">';
+  h += '<div class="proj-top"><span class="kind">' + esc(p.kind) + '</span><span class="pill ' + st.cls + '">' + st.label + '</span></div>';
+  h += '<h4>' + esc(p.title) + '</h4><p>' + esc(p.summary) + '</p>';
+  if (p.pages) h += '<div class="pages">' + p.pages.map(x => '<div><b>' + esc(x[0]) + '</b>' + esc(x[1]) + '</div>').join("") + '</div>';
+  h += '<ul>' + p.bullets.map(b => '<li>' + esc(b) + '</li>').join("") + '</ul>';
+  if (p.insight) h += '<div class="insight"><strong>Finding</strong>' + esc(p.insight) + '</div>';
+  h += '<div class="chips">' + p.tools.map(t => '<span class="chip">' + esc(t) + '</span>').join("") + '</div>';
+  if (p.link) h += '<a class="more" href="' + p.link[0] + '">' + esc(p.link[1]) + '</a>';
+  return h + '</article>';
+}
+
+function show(id, fromUser){
+  const f = FOLDERS.find(x => x.id === id) || FOLDERS[0];
+  foldersEl.querySelectorAll(".folder").forEach(b => {
+    const on = b.dataset.id === f.id;
+    b.setAttribute("aria-selected", on);
+    b.tabIndex = on ? 0 : -1;
+  });
+  panelEl.setAttribute("aria-labelledby", "tab-" + f.id);
+  panelEl.innerHTML =
+    '<div class="path">projects / <b>' + esc(f.name.toLowerCase().replace(/ & /g,"-").replace(/ /g,"-")) + '</b> / ' + f.projects.length + ' items</div>' +
+    '<div class="panel-title"><div><h3>' + esc(f.name) + '</h3><p>' + esc(f.intro) + '</p></div></div>' +
+    '<div class="files">' + f.projects.map(card).join("") + '</div>';
+  if (fromUser && location.hash !== "#" + f.id) history.replaceState(null, "", "#" + f.id);
+}
+
+foldersEl.addEventListener("click", e => {
+  const b = e.target.closest(".folder"); if (!b) return;
+  show(b.dataset.id, true);
+});
+foldersEl.addEventListener("keydown", e => {
+  if (!["ArrowDown","ArrowUp","ArrowRight","ArrowLeft"].includes(e.key)) return;
+  const tabs = [...foldersEl.querySelectorAll(".folder")];
+  const i = tabs.findIndex(t => t.getAttribute("aria-selected") === "true");
+  const n = (i + (e.key === "ArrowDown" || e.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+  e.preventDefault(); tabs[n].focus(); show(tabs[n].dataset.id, true);
+});
+
+function fromHash(){
+  const h = location.hash.slice(1);
+  if (FOLDERS.some(f => f.id === h)) {
+    show(h);
+    document.getElementById("projects").scrollIntoView();
+  }
+}
+window.addEventListener("hashchange", fromHash);
+show(FOLDERS.some(f => f.id === location.hash.slice(1)) ? location.hash.slice(1) : "power-bi");
+</script>
+</body>
+</html>

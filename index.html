@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swetha Raj Portfolio</title>
-<meta name="description" content="Swetha Raj, Data & Marketing Analyst in Munich. Power BI, Advanced Excel, LabVIEW, Python & SQL and CRM/RevOps projects.">
-<meta property="og:title" content="Swetha Raj – Data & Marketing Analyst Portfolio">
-<meta property="og:description" content="Power BI, Advanced Excel, LabVIEW, Python & SQL and CRM/RevOps projects.">
+<meta name="description" content="Swetha Raj, Data &amp; Marketing Analyst in Munich. Power BI, Advanced Excel, LabVIEW, Python &amp; SQL and CRM/RevOps projects.">
+<meta property="og:title" content="Swetha Raj – Data &amp; Marketing Analyst Portfolio">
+<meta property="og:description" content="Power BI, Advanced Excel, LabVIEW, Python &amp; SQL and CRM/RevOps projects.">
 <meta property="og:image" content="https://datacraft-sr.github.io/og-card.png">
 <meta property="og:image:width" content="1377">
 <meta property="og:image:height" content="868">
 <meta property="og:url" content="https://datacraft-sr.github.io/">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
 /* Layout idea: an analyst's report. Hero = funnel + scorecard, then a project library organised as folders, a ledger-style timeline, skills, education. */
 :root{
@@ -204,7 +203,16 @@ section{padding:8px 0 72px}
 footer{padding:0 0 40px;color:var(--muted);font-size:13.5px}
 .avatar{display:block;width:128px;height:128px;border-radius:50%;object-fit:cover;object-position:50% 24%;border:4px solid var(--surface);box-shadow:0 0 0 2px var(--ink), 6px 6px 0 2px var(--mark);margin-bottom:24px}
 .nav-photo{width:32px;height:32px;border-radius:8px;object-fit:cover;object-position:50% 22%}
+
+/* Language switch */
+nav .wrap > ul{margin-left:auto}
+.lang{display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-family:var(--mono);font-size:12px;font-weight:600;flex-shrink:0}
+.lang a{padding:4px 10px;border-radius:999px;color:var(--muted);text-decoration:none;line-height:1.2}
+.lang a[aria-current]{background:var(--ink);color:var(--paper)}
+.lang a:not([aria-current]):hover{color:var(--ink)}
 </style>
+<link rel="alternate" hreflang="en" href="https://datacraft-sr.github.io/">
+<link rel="alternate" hreflang="de" href="https://datacraft-sr.github.io/de">
 </head>
 <body>
 
@@ -218,6 +226,8 @@ footer{padding:0 0 40px;color:var(--muted);font-size:13.5px}
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
+    <div class="lang" role="group" aria-label="Language"><a href="/" hreflang="en" lang="en" aria-current="page">EN</a><a href="/de" hreflang="de" lang="de">DE</a></div>
+  
   </div>
 </nav>
 
@@ -573,5 +583,6 @@ function fromHash(){
 window.addEventListener("hashchange", fromHash);
 show(FOLDERS.some(f => f.id === location.hash.slice(1)) ? location.hash.slice(1) : "power-bi");
 </script>
-</body>
-</html>
+
+
+</body></html>

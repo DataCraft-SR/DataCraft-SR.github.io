@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swetha Raj Portfolio</title>
 <meta name="description" content="Swetha Raj, Data &amp; Marketing Analyst in München. Projekte zu Power BI, Advanced Excel, LabVIEW, Python &amp; SQL sowie CRM/RevOps.">
-<meta property="og:title" content="Swetha Raj – Data &amp; Marketing Analyst Portfolio">
+<meta property="og:title" content="Swetha Raj – Data Analyst &amp; Testautomatisierung Portfolio">
 <meta property="og:description" content="Projekte zu Power BI, Advanced Excel, LabVIEW, Python &amp; SQL sowie CRM/RevOps.">
 <meta property="og:image" content="https://datacraft-sr.github.io/og-card.png">
 <meta property="og:image:width" content="1377">
@@ -237,9 +237,9 @@ nav .wrap > ul{margin-left:auto}
   <header class="hero">
     <div>
       <img class="avatar" src="s.jpg" alt="Porträt von Swetha Raj" width="128" height="128">
-      <span class="status"><i aria-hidden="true"></i>Offen für Analyst-Positionen · Deutschland, Europa, remote</span>
-      <h1>Ich finde, wo der Funnel Leads verliert, und <em>behebe es mit Daten.</em></h1>
-      <p class="lede">Marketing- &amp; Operations-Analystin in München mit einem MSc in Advanced Computer Science. Ich baue Power-BI- und Excel-Modelle, analysiere Lead-Funnels in HubSpot und Metabase und bringe einen Engineering-Hintergrund in LabVIEW und industrieller Automatisierung mit.</p>
+      <span class="status"><i aria-hidden="true"></i>Offen für Data-Analyst- &amp; LabVIEW-/Testautomatisierungs-Positionen · Deutschland, Europa, remote</span>
+      <h1>Von LabVIEW und SPS bis Power BI: <em>Ich baue Systeme und mache sie mit Daten besser.</em></h1>
+      <p class="lede">Analystin und LabVIEW-Entwicklerin in München mit einem MSc in Advanced Computer Science. Ich baue Power-BI- und Excel-Modelle, analysiere Lead-Funnels in HubSpot und Metabase. Im Engineering habe ich LabVIEW-Testsysteme (DQMH, TCP/UDP) und SPS-Automatisierung im Siemens TIA Portal umgesetzt.</p>
       <div class="cta">
         <a class="btn primary" href="#projects">Projektordner öffnen</a>
         <a class="btn ghost" href="mailto:swetharajvv345@gmail.com">Kontakt aufnehmen</a>
@@ -310,7 +310,9 @@ nav .wrap > ul{margin-left:auto}
           <h3>Software Engineer</h3>
           <div class="org">Control Software Solutions · industrielle Automatisierung</div>
           <ul>
-            <li>Automatisierungsprojekte im Siemens TIA Portal entwickelt und SPS-Code (PLC) refaktoriert</li>
+            <li>Eine bestehende LabVIEW-Testanwendung auf das DQMH-Framework refaktoriert, mit vier Prüflingen (UUTs) und zuverlässigen Ergebnissen</li>
+            <li>TCP/UDP-Kommunikation in LabVIEW für den Datenaustausch mit externen Geräten und Systemen umgesetzt</li>
+            <li>SPS-Kommunikation im Siemens TIA Portal eingerichtet, Renu-SPS-Code einer automatisierten Schneidemaschine refaktoriert und mit Motion-Controllern gearbeitet</li>
             <li>Arbeit mit LabVIEW, Hardware- und Geräteintegration, Git, Tests und CI</li>
           </ul>
         </div>
@@ -348,7 +350,7 @@ nav .wrap > ul{margin-left:auto}
       <div class="skillset">
         <h3>Engineering &amp; RevOps</h3>
         <p>Automatisierung in der Fertigung und im CRM.</p>
-        <div class="chips"><span class="chip">LabVIEW</span><span class="chip">Siemens TIA Portal</span><span class="chip">SPS (PLC)</span><span class="chip">Git &amp; CI</span><span class="chip">HubSpot CRM</span><span class="chip">GTM-Automatisierung</span></div>
+        <div class="chips"><span class="chip">LabVIEW</span><span class="chip">DQMH</span><span class="chip">TCP/IP &amp; UDP</span><span class="chip">Siemens TIA Portal</span><span class="chip">SPS (PLC)</span><span class="chip">Motion Control</span><span class="chip">Git &amp; CI</span><span class="chip">HubSpot CRM</span><span class="chip">GTM-Automatisierung</span></div>
       </div>
     </div>
   </section>
@@ -391,7 +393,7 @@ nav .wrap > ul{margin-left:auto}
   <div class="contact" id="contact">
     <div>
       <h2>Sie suchen eine Analystin, die mit Vertrieb, Operations und Engineering gleichermaßen sprechen kann?</h2>
-      <p>Ich bin offen für Positionen als Data, Marketing, Operations oder Business Analyst – in Deutschland, europaweit oder remote.</p>
+      <p>Ich bin offen für Positionen als Data, Marketing, Operations oder Business Analyst sowie im Bereich LabVIEW/Testautomatisierung – in Deutschland, europaweit oder remote.</p>
     </div>
     <div class="links">
       <a href="mailto:swetharajvv345@gmail.com">E-Mail <span>swetharajvv345@gmail.com</span></a>
@@ -461,19 +463,25 @@ const FOLDERS = [
   },
   {
     id:"labview", name:"LabVIEW & Automatisierung", sub:"Test- & Industriesysteme", color:"#E2574C",
-    intro:"Engineering-Arbeit aus der industriellen Automatisierung: Geräteintegration, SPS-Programmierung und Softwarequalität.",
+    intro:"LabVIEW-Testsysteme und industrielle Automatisierung bei Control Software Solutions (Manchester): DQMH, TCP/UDP-Kommunikation, SPS und Motion Control.",
     projects:[
       {
-        title:"Geräteintegration mit LabVIEW", kind:"Mess- & Prüftechnik", status:"work",
-        summary:"Bei Control Software Solutions (Manchester): Anbindung von Hardware und Messgeräten an LabVIEW-Anwendungen für Kunden aus der industriellen Automatisierung.",
-        bullets:["Hardware- und Geräteintegration in LabVIEW","Tests und Versionskontrolle mit Git und CI"],
-        tools:["LabVIEW","Instrument I/O","Git","CI & Tests"]
+        title:"LabVIEW-Altcode auf DQMH refaktoriert", kind:"Testautomatisierung", status:"work", wide:true,
+        summary:"Eine bestehende LabVIEW-Testanwendung auf das DQMH-Framework umgestellt, sodass vier Prüflinge (UUTs) in einem modularen, ereignisgesteuerten System laufen.",
+        bullets:["Monolithischen Altcode in unabhängige DQMH-Module aufgeteilt","Vier UUTs mit zuverlässigen, konsistenten Ergebnissen getestet","Leichter zu debuggen, zu warten und um neue Tests zu erweitern"],
+        tools:["LabVIEW","DQMH","Testautomatisierung","Git"]
       },
       {
-        title:"SPS-Entwicklung & Refactoring", kind:"Industrielle Automatisierung", status:"work",
-        summary:"Automatisierungsprojekte im Siemens TIA Portal, einschließlich Refactoring von bestehendem SPS-Code für bessere Lesbarkeit und Wartbarkeit.",
-        bullets:["Projektentwicklung im Siemens TIA Portal","SPS-Code refaktoriert, damit er leichter zu lesen, zu testen und zu warten ist"],
-        tools:["Siemens TIA Portal","SPS (PLC)","Refactoring"]
+        title:"TCP/UDP-Kommunikation für ein Testsystem", kind:"Mess- & Prüftechnik", status:"work",
+        summary:"TCP- und UDP-Verbindungen in LabVIEW eingerichtet und betreut, für den Datenaustausch zwischen Testanwendung und externen Geräten und Systemen.",
+        bullets:["TCP/IP- und UDP-Kommunikation in LabVIEW umgesetzt","Hardware- und Geräteintegration","Versionskontrolle und Tests mit Git und CI"],
+        tools:["LabVIEW","TCP/IP","UDP","Instrument I/O"]
+      },
+      {
+        title:"SPS-Automatisierung & Motion Control", kind:"Industrielle Automatisierung", status:"work",
+        summary:"SPS-Kommunikation im Siemens TIA Portal eingerichtet sowie den Altcode einer Renu-SPS für eine Schneidemaschine refaktoriert, inklusive Arbeit mit Motion-Controllern.",
+        bullets:["SPS-Kommunikation im Siemens TIA Portal konfiguriert","Renu-SPS-Code für einen automatisierten Schneidprozess refaktoriert","Mit Motion-Controllern für Maschinenbewegungen gearbeitet"],
+        tools:["Siemens TIA Portal","Renu-SPS","Motion Control","Refactoring"]
       }
     ]
   },

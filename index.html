@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swetha Raj Portfolio</title>
 <meta name="description" content="Swetha Raj, Data &amp; Marketing Analyst in Munich. Power BI, Advanced Excel, LabVIEW, Python &amp; SQL and CRM/RevOps projects.">
-<meta property="og:title" content="Swetha Raj – Data &amp; Marketing Analyst Portfolio">
+<meta property="og:title" content="Swetha Raj – Data Analyst &amp; Test Automation Portfolio">
 <meta property="og:description" content="Power BI, Advanced Excel, LabVIEW, Python &amp; SQL and CRM/RevOps projects.">
 <meta property="og:image" content="https://datacraft-sr.github.io/og-card.png">
 <meta property="og:image:width" content="1377">
@@ -238,7 +238,7 @@ nav .wrap > ul{margin-left:auto}
       <img class="avatar" src="s.jpg" alt="Portrait of Swetha Raj" width="128" height="128">
       <span class="status"><i aria-hidden="true"></i>Open to Data Analyst &amp; LabVIEW / Test Automation roles · Germany, Europe, remote</span>
       <h1>From LabVIEW and PLCs to Power BI, <em>I build systems and use data to make them better.</em></h1>
-      <p class="lede">Marketing &amp; Operations Analyst in Munich with an MSc in Advanced Computer Science. I build Power BI and Excel models, analyse lead funnels in HubSpot and Metabase, and bring an engineer's background in LabVIEW and industrial automation.</p>
+      <p class="lede">Analyst and LabVIEW developer in Munich with an MSc in Advanced Computer Science. I build Power BI and Excel models, analyse lead funnels in HubSpot and Metabase. On the engineering side, I have built LabVIEW test systems (DQMH, TCP/UDP) and PLC automation in Siemens TIA Portal.</p>
       <div class="cta">
         <a class="btn primary" href="#projects">Open the project folders</a>
         <a class="btn ghost" href="mailto:swetharajvv345@gmail.com">Get in touch</a>
@@ -309,7 +309,9 @@ nav .wrap > ul{margin-left:auto}
           <h3>Software Engineer</h3>
           <div class="org">Control Software Solutions · industrial automation</div>
           <ul>
-            <li>Developed automation projects in Siemens TIA Portal and refactored PLC code</li>
+            <li>Refactored a legacy LabVIEW test application into the DQMH framework, running four units under test with reliable results</li>
+            <li>Built TCP/UDP communication in LabVIEW for data exchange with external devices and systems</li>
+            <li>Set up PLC communication in Siemens TIA Portal, refactored Renu PLC code for an automated cutting machine and worked with motion controllers</li>
             <li>Worked with LabVIEW, hardware and instrument integration, Git, testing and CI</li>
           </ul>
         </div>
@@ -347,7 +349,7 @@ nav .wrap > ul{margin-left:auto}
       <div class="skillset">
         <h3>Engineering &amp; RevOps</h3>
         <p>Automation on the factory floor and in the CRM.</p>
-        <div class="chips"><span class="chip">LabVIEW</span><span class="chip">Siemens TIA Portal</span><span class="chip">PLC</span><span class="chip">Git &amp; CI</span><span class="chip">HubSpot CRM</span><span class="chip">GTM automation</span></div>
+        <div class="chips"><span class="chip">LabVIEW</span><span class="chip">DQMH</span><span class="chip">TCP/IP &amp; UDP</span><span class="chip">Siemens TIA Portal</span><span class="chip">PLC</span><span class="chip">Motion control</span><span class="chip">Git &amp; CI</span><span class="chip">HubSpot CRM</span><span class="chip">GTM automation</span></div>
       </div>
     </div>
   </section>
@@ -390,7 +392,7 @@ nav .wrap > ul{margin-left:auto}
   <div class="contact" id="contact">
     <div>
       <h2>Looking for an analyst who can talk to sales, ops and engineers?</h2>
-      <p>I'm open to Data, Marketing, Operations and Business Analyst roles in Germany, across Europe, or remote.</p>
+      <p>I'm open to Data, Marketing, Operations and Business Analyst roles, and LabVIEW / Test Automation roles, in Germany, across Europe, or remote.</p>
     </div>
     <div class="links">
       <a href="mailto:swetharajvv345@gmail.com">Email <span>swetharajvv345@gmail.com</span></a>
@@ -460,19 +462,25 @@ const FOLDERS = [
   },
   {
     id:"labview", name:"LabVIEW & Automation", sub:"Test & industrial systems", color:"#E2574C",
-    intro:"Engineering work from industrial automation: instrument integration, PLC programming and software quality.",
+    intro:"LabVIEW test systems and industrial automation at Control Software Solutions (Manchester): DQMH, TCP/UDP communication, PLCs and motion control.",
     projects:[
       {
-        title:"Instrument Integration with LabVIEW", kind:"Test & measurement", status:"work",
-        summary:"At Control Software Solutions (Manchester): connecting hardware and instruments to LabVIEW applications for industrial automation clients.",
-        bullets:["Hardware and instrument integration in LabVIEW","Testing and version control with Git and CI"],
-        tools:["LabVIEW","Instrument I/O","Git","CI & testing"]
+        title:"Legacy LabVIEW Refactor to DQMH", kind:"Test automation", status:"work", wide:true,
+        summary:"Refactored a legacy LabVIEW test application into the DQMH framework, so four units under test (UUTs) run through one modular, event-driven system.",
+        bullets:["Split monolithic legacy code into independent DQMH modules","Tested four UUTs with reliable, consistent results","Easier to debug, maintain and extend with new tests"],
+        tools:["LabVIEW","DQMH","Test automation","Git"]
       },
       {
-        title:"PLC Development & Refactoring", kind:"Industrial automation", status:"work",
-        summary:"Automation projects developed in Siemens TIA Portal, including refactoring existing PLC code for clarity and maintainability.",
-        bullets:["Project development in Siemens TIA Portal","Refactored PLC code to make it easier to read, test and maintain"],
-        tools:["Siemens TIA Portal","PLC","Refactoring"]
+        title:"TCP/UDP Communication for a Test System", kind:"Test & measurement", status:"work",
+        summary:"Set up and handled TCP and UDP connections in LabVIEW for data exchange between the test application and external devices and systems.",
+        bullets:["TCP/IP and UDP communication built in LabVIEW","Hardware and instrument integration","Version control and testing with Git and CI"],
+        tools:["LabVIEW","TCP/IP","UDP","Instrument I/O"]
+      },
+      {
+        title:"PLC Automation & Motion Control", kind:"Industrial automation", status:"work",
+        summary:"PLC communication set up in Siemens TIA Portal, plus a Renu PLC cutting machine whose legacy code I refactored, working with motion controllers.",
+        bullets:["Configured PLC communication in Siemens TIA Portal","Refactored legacy Renu PLC code automating a cutting process","Worked with motion controllers for machine movement"],
+        tools:["Siemens TIA Portal","Renu PLC","Motion control","Refactoring"]
       }
     ]
   },
